@@ -34,6 +34,7 @@
     </scm>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <openMRSVersion>1.10.0</openMRSVersion>
         <webservices.restModuleVersion>2.6</webservices.restModuleVersion>
         <warFilename>openmrs</warFilename>
@@ -100,7 +101,6 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${project.build.directory}</outputDirectory>
-                            <encoding>UTF-8</encoding>
                             <resources>
                                 <resource>
                                     <directory>scripts</directory>
