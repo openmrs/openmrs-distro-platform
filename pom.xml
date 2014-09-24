@@ -1,0 +1,139 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.openmrs.distro</groupId>
+    <artifactId>platform</artifactId>
+    <version>1.10.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>OpenMRS Platform</name>
+    <description>A project for packaging the OpenMRS Platform</description>
+    <url>http://openmrs.org</url>
+
+    <issueManagement>
+        <system>JIRA</system>
+        <url>http://tickets.openmrs.org/</url>
+    </issueManagement>
+
+    <licenses>
+        <license>
+            <name>OpenMRS Public License</name>
+            <url>http://openmrs.org/wiki/License</url>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>OpenMRS LLC.</name>
+        <url>http://openmrs.org</url>
+    </organization>
+
+    <scm>
+        <connection>scm:git:https://github.com/openmrs/openmrs-distro-platform</connection>
+        <developerConnection>scm:git:https://github.com/openmrs/openmrs-distro-platform</developerConnection>
+        <url>https://github.com/openmrs/openmrs-distro-platform</url>
+    </scm>
+
+    <properties>
+        <openMRSVersion>1.10.0</openMRSVersion>
+        <webservices.restModuleVersion>2.6</webservices.restModuleVersion>
+        <scriptFilename>add-modules.sh</scriptFilename>
+        <modulesFolder>WEB-INF/bundledModules</modulesFolder>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.openmrs.web</groupId>
+            <artifactId>openmrs-webapp</artifactId>
+            <version>${openMRSVersion}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>webservices.rest-omod</artifactId>
+            <version>${webservices.restModuleVersion}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>openmrs</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+                <executions>
+                    <execution>
+                        <id>prepare-platform-distro</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.openmrs.web</groupId>
+                                    <artifactId>openmrs-webapp</artifactId>
+                                    <type>war</type>
+                                    <destFileName>openmrs.war</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.openmrs.module</groupId>
+                                    <artifactId>webservices.rest-omod</artifactId>
+                                    <destFileName>${modulesFolder}/webservices.rest-${webservices.restModuleVersion}.omod</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>scripts</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>${scriptFilename}</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.3.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>/bin/bash</executable>
+                            <workingDirectory>${project.build.directory}</workingDirectory>
+                            <arguments>
+                                <argument>${scriptFilename}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
