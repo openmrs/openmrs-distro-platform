@@ -112,6 +112,30 @@
                             </resources>
                         </configuration>
                     </execution>
+                    <!-- Copy the omods in the modules directory which are not downloadable from http://mavenrepo.openmrs.org/nexus -->
+                    <execution>
+                        <id>copy-downloaded-modules</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/${modulesFolder}</outputDirectory>
+                            <!-- prevent corruption of binary files by filtering activity which may be needed -->
+                            <nonFilteredFileExtensions>
+                                <nonFilteredFileExtension>omod</nonFilteredFileExtension>
+                            </nonFilteredFileExtensions>
+                            <resources>
+                                <resource>
+                                    <directory>modules</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>*.omod</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
