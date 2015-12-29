@@ -1,0 +1,3 @@
+Copy any .omod files here which cannot be downloaded via the pom.xml file
+
+This file is ignored by the task the copies the resources to the modules folder in the WAR file
