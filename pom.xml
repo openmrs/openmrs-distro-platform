@@ -35,10 +35,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <openMRSVersion>2.0.0</openMRSVersion>
-        <webservices.restModuleVersion>2.15</webservices.restModuleVersion>
-        <owaModuleVersion>1.5</owaModuleVersion>
-        <fhirModuleVersion>1.5</fhirModuleVersion>
+        <openMRSVersion>2.0.1</openMRSVersion>
+        <webservices.restModuleVersion>2.16</webservices.restModuleVersion>
+        <owaModuleVersion>1.6.3</owaModuleVersion>
+        <fhirModuleVersion>1.6</fhirModuleVersion>
         <warFilename>openmrs</warFilename>
         <scriptFilename>add-modules.sh</scriptFilename>
         <modulesFolder>WEB-INF/bundledModules</modulesFolder>
