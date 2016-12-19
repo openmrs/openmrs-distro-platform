@@ -35,10 +35,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <openMRSVersion>2.1.0-SNAPSHOT</openMRSVersion>
-        <webservices.restModuleVersion>2.17-SNAPSHOT</webservices.restModuleVersion>
-        <owaModuleVersion>1.6.3</owaModuleVersion>
-        <fhirModuleVersion>1.6</fhirModuleVersion>
+        <openmrsPlatformVersion>${project.version}</openmrsPlatformVersion>
+        <webservices.restVersion>2.17-SNAPSHOT</webservices.restVersion>
+        <owaVersion>1.6.3</owaVersion>
+        <fhirVersion>1.6</fhirVersion>
     </properties>
 
     <build>
