@@ -38,7 +38,7 @@
         <openmrsPlatformVersion>${project.version}</openmrsPlatformVersion>
         <webservices.restVersion>2.17-SNAPSHOT</webservices.restVersion>
         <owaVersion>1.6.3</owaVersion>
-        <fhirVersion>1.6</fhirVersion>
+        <fhirVersion>1.7-SNAPSHOT</fhirVersion>
     </properties>
 
     <build>
