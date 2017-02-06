@@ -3,10 +3,22 @@ openmrs-distro-platform
 
 A project for packaging the OpenMRS Platform
 
+### What modules to include?
+
+Before you do anything else, you need to verify what modules should be bundled with this version of the OpenMRS Platform. At time of writing these are as follows, but you should verify this with a senior developer on OpenMRS Talk, or IRC:
+
+ * webservices.rest
+ * owa
+ * fhir
+ 
+If any of these modules have significant recent commits that have not been released yet, then consider releasing them before you do the platform release.
+
 ###Building the project
- * Check out the project onto your machine if you haven't yet.
- * Updated the **version** property value in the pom file to match the version of OpenMRS platform you're building
- * Update the **webservices.restVersion** property value to match the version of the webservices.rest module you wish to bundle
+ * Clone the project onto your machine if you haven't yet.
+ * Check out the branch corresponding to the release line you want to release (e.g. the 2.0.x branch for Platform 2.0.4)
+ * Update the **version** property value in the pom file to match the version of OpenMRS platform you're building
+ * In the **properties** section of pom.xml update all module version properties (e.g. *webservices.restVersion*) to match the versions you wish to bundle
+ * Ensure that the openmrs-distro.properties file includes all bundled modules (e.g. *omod.webservices.rest*)
  * Build the distributable by running the command below: 
  
   ``` 
