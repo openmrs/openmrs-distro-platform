@@ -48,6 +48,7 @@
 				<filtering>true</filtering>
 				<includes>
 					<include>*.properties</include>
+					<include>readme.txt</include>
 				</includes>
 			</resource>
 		</resources>
