@@ -66,7 +66,7 @@ Upgrading to OpenMRS Platform ${project.version}
 Also see Also see https://wiki.openmrs.org/display/docs/Upgrading+OpenMRS
 
 ---------------------------------------------------------------------
-Copyright (C) 2012 OpenMRS LLC. Use of this software is subject to 
-the terms of the OpenMRS Public License, available at:
-http://go.openmrs.org/license 
+Copyright (C) 2004-2017 OpenMRS Inc. Use of this software is subject to 
+the terms of the Mozilla Public License v. 2.0, available at:
+http://openmrs.org/license 
 ---------------------------------------------------------------------
