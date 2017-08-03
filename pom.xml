@@ -86,7 +86,7 @@
 						<configuration>
 						  <artifacts>
 							<artifact>
-							  <file>target/distro/openmrs.war</file>
+							  <file>target/distro/web/openmrs.war</file>
 							  <type>war</type>
 							</artifact>
 						  </artifacts>
