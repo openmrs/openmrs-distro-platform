@@ -36,7 +36,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<openmrsPlatformVersion>${project.version}</openmrsPlatformVersion>
-		<webservices.restVersion>2.13</webservices.restVersion>
+		<webservices.restVersion>2.21.0</webservices.restVersion>
 	</properties>
 
 	<build>
