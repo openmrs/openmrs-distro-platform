@@ -29,7 +29,7 @@
 
     <scm>
         <connection>scm:git:git@github.com:openmrs/openmrs-distro-platform.git</connection>
-        <developerConnection>scm:git:git@github.com:openmrs/openmrs-distro-platform.git/developerConnection>
+        <developerConnection>scm:git:git@github.com:openmrs/openmrs-distro-platform.git</developerConnection>
         <url>https://github.com/openmrs/openmrs-distro-platform</url>
     </scm>
 
