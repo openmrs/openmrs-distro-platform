@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.openmrs.distro</groupId>
@@ -26,17 +27,18 @@
 		<url>http://openmrs.org</url>
 	</organization>
 
-	<scm>
-		<connection>scm:git:git@github.com:openmrs/openmrs-distro-platform</connection>
-		<developerConnection>scm:git:git@github.com:openmrs/openmrs-distro-platform</developerConnection>
-		<url>https://github.com/openmrs/openmrs-distro-platform</url>
-	  <tag>HEAD</tag>
-  </scm>
+    <scm>
+        <connection>scm:git:git@github.com:openmrs/openmrs-distro-platform.git</connection>
+        <developerConnection>scm:git:git@github.com:openmrs/openmrs-distro-platform.git</developerConnection>
+        <url>https://github.com/openmrs/openmrs-distro-platform</url>
+    </scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<openmrsPlatformVersion>${project.version}</openmrsPlatformVersion>
 		<webservices.restVersion>2.21.0</webservices.restVersion>
+		<owaVersion>1.8.1</owaVersion>
+		<fhirVersion>1.8.0</fhirVersion>
 	</properties>
 
 	<build>
@@ -45,40 +47,31 @@
 				<directory>.</directory>
 				<filtering>true</filtering>
 				<includes>
-					<include>*.properties</include>
+					<include>openmrs-distro.properties</include>
+					<include>readme.txt</include>
 				</includes>
 			</resource>
 		</resources>
-		
+
 		<plugins>
 			<plugin>
 				<groupId>org.openmrs.maven.plugins</groupId>
 				<artifactId>openmrs-sdk-maven-plugin</artifactId>
-				<version>3.4.5</version>
+				<version>3.12.4</version>
 				<executions>
 					<execution>
 						<id>build-distro</id>
-						<phase>generate-resources</phase>
+						<phase>process-resources</phase>
 						<goals>
 							<goal>build-distro</goal>
 						</goals>
 						<configuration>
+							<distro>${project.build.outputDirectory}/openmrs-distro.properties</distro>
 							<dir>target/distro</dir>
 							<bundled>true</bundled>
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5</version>
-				<configuration>
-					<useReleaseProfile>false</useReleaseProfile>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<arguments>-Prelease</arguments>
-					<tagNameFormat>@{project.version}</tagNameFormat>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -94,7 +87,7 @@
 						<configuration>
 						  <artifacts>
 							<artifact>
-							  <file>target/distro/openmrs.war</file>
+							  <file>target/distro/web/openmrs.war</file>
 							  <type>war</type>
 							</artifact>
 						  </artifacts>
@@ -104,55 +97,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	<profiles>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<version>2.1.2</version>
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.8.1</version>
-						<configuration>
-							<tags>
-								<tag>
-									<name>should</name>
-									<placement>a</placement>
-									<head>Should:</head>
-								</tag>
-							</tags>
-						</configuration>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-								<configuration>
-					              	<failOnError>false</failOnError>
-					            </configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-	
+
 	<repositories>
 		<repository>
 			<id>openmrs-repo</id>
