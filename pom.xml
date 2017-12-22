@@ -41,6 +41,29 @@
 		<fhirVersion>1.8.0</fhirVersion>
 	</properties>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>webservices-rest</artifactId>
+				<version>${webservices.restVersion}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>owa</artifactId>
+				<version>${owaVersion}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>fhir</artifactId>
+				<version>${fhirVersion}</version>
+				<type>jar</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
 		<resources>
 			<resource>
