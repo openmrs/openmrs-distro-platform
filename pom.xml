@@ -38,7 +38,7 @@
 		<openmrsPlatformVersion>${project.version}</openmrsPlatformVersion>
 		<webservices.restVersion>2.21.0</webservices.restVersion>
 		<owaVersion>1.9.0</owaVersion>
-		<fhirVersion>1.11.0</fhirVersion>
+		<fhirVersion>1.13.1</fhirVersion>
 	</properties>
 
 	<dependencyManagement>
