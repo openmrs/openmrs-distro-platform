@@ -36,10 +36,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<openmrsPlatformVersion>${project.version}</openmrsPlatformVersion>
-		<webservices.restVersion>2.23.0</webservices.restVersion>
+		<webservices.restVersion>2.26.0</webservices.restVersion>
 		<owaVersion>1.10.0</owaVersion>
-		<fhirVersion>1.18.0</fhirVersion>
-		<addonManagerVersion>1.0.0</addonManagerVersion>
+		<fhirVersion>1.19.0</fhirVersion>
+		<addonManagerVersion>1.1.0</addonManagerVersion>
 	</properties>
 
 	<dependencyManagement>
