@@ -37,8 +37,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<openmrsPlatformVersion>${project.version}</openmrsPlatformVersion>
 		<webservices.restVersion>2.21.0</webservices.restVersion>
-		<owaVersion>1.10.0</owaVersion>
-		<fhirVersion>1.18.0</fhirVersion>
+		<owaVersion>1.11.0</owaVersion>
+		<fhirVersion>1.19.0</fhirVersion>
 	</properties>
 
 	<dependencyManagement>
