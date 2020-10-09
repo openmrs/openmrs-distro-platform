@@ -19,7 +19,7 @@ The platform also comes bundled with some Open Web Applications (OWAs). Verify t
 
 * Add On Manager 
 
-###Building the project
+### Building the project
  * Clone the project onto your machine if you haven't yet.
  * Check out the branch corresponding to the release line you want to release (e.g. the 2.0.x branch for Platform 2.0.4)
  * Update the **version** property value in the pom file to match the version of OpenMRS platform you're building
