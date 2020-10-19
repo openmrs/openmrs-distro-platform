@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.openmrs.distro</groupId>
 	<artifactId>platform</artifactId>
-	<version>2.3.2-SNAPSHOT</version>
+	<version>2.3.2</version>
 	<packaging>jar</packaging>
 	<name>OpenMRS Platform</name>
 	<description>A project for packaging the OpenMRS Platform</description>
@@ -30,7 +30,7 @@
         <connection>scm:git:git@github.com:openmrs/openmrs-distro-platform.git</connection>
         <developerConnection>scm:git:git@github.com:openmrs/openmrs-distro-platform.git</developerConnection>
         <url>https://github.com/openmrs/openmrs-distro-platform</url>
-      <tag>HEAD</tag>
+      <tag>platform-2.3.2</tag>
   </scm>
 
 	<properties>
