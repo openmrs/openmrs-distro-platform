@@ -26,7 +26,14 @@ The platform also comes bundled with some Open Web Applications (OWAs). Verify t
  * In the **properties** section of pom.xml update all module version properties (e.g. *webservices.restVersion*) to match the versions you wish to bundle
  * Ensure that the openmrs-distro.properties file includes all bundled modules (e.g. *omod.webservices.rest*) as well as all bundled OWAs (e.g. *owa.openmrs-owa-addonmanager*)
  * Build the distributable by running the command below: 
- 
+  ```
+  docker compose build
+  ``` 
+  or natively with maven:
   ``` 
   mvn clean install
+  ```
+ * Run the distribution with:
+  ```
+  docker compose up
   ```
