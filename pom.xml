@@ -85,6 +85,18 @@
 				<version>4.0.0</version>
 				<executions>
 					<execution>
+						<id>build-distro-bundled</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>build-distro</goal>
+						</goals>
+						<configuration>
+							<distro>${project.build.outputDirectory}/openmrs-distro.properties</distro>
+							<dir>target/bundled-distro</dir>
+							<bundled>true</bundled>
+						</configuration>
+					</execution>
+					<execution>
 						<id>build-distro</id>
 						<phase>process-resources</phase>
 						<goals>
@@ -93,7 +105,7 @@
 						<configuration>
 							<distro>${project.build.outputDirectory}/openmrs-distro.properties</distro>
 							<dir>target/distro</dir>
-							<bundled>true</bundled>
+							<bundled>false</bundled>
 						</configuration>
 					</execution>
 				</executions>
@@ -112,7 +124,7 @@
 						<configuration>
 						  <artifacts>
 							<artifact>
-							  <file>target/distro/web/openmrs.war</file>
+							  <file>target/bundled-distro/web/openmrs.war</file>
 							  <type>war</type>
 							</artifact>
 						  </artifacts>
