@@ -1,7 +1,9 @@
 # syntax=docker/dockerfile:1
+ARG OMRS_DEV_VERSION="2.5.x-dev"
+ARG OMRS_VERSION="2.5.x-nightly"
 
 ### Dev Stage
-FROM openmrs/openmrs-core:2.5.x-dev as dev
+FROM openmrs/openmrs-core:${OMRS_DEV_VERSION} as dev
 WORKDIR /openmrs_distro
 
 ARG OMRS_BUILD_RESULT="/openmrs_distro/target/distro/web"
@@ -24,7 +26,7 @@ RUN mvn clean $MVN_ARGS_SETTINGS
 
 ### Run Stage
 # Replace 'nightly' with the exact version of openmrs-core built for production (if available)
-FROM openmrs/openmrs-core:2.5.x-nightly
+FROM openmrs/openmrs-core:${OMRS_VERSION}
 
 COPY --from=dev /openmrs/distribution/openmrs-distro.properties /openmrs/distribution/
 COPY --from=dev /openmrs/distribution/openmrs_modules /openmrs/distribution/openmrs_modules
