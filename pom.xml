@@ -39,7 +39,7 @@
 		<openmrsPlatformVersion>${project.version}</openmrsPlatformVersion>
 		<webservices.restVersion>2.45.0-SNAPSHOT</webservices.restVersion>
 		<owaVersion>1.15.0-SNAPSHOT</owaVersion>
-		<fhirVersion>2.2.0-SNAPSHOT</fhirVersion>
+		<fhirVersion>2.2.0</fhirVersion>
 		<addonManagerVersion>1.1.0</addonManagerVersion>
 	</properties>
 
