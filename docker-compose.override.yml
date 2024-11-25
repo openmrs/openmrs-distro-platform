@@ -16,5 +16,4 @@ services:
         environment:
             OMRS_DEV_DEBUG_PORT: ${OMRS_DEV_DEBUG_PORT:-8000}
         volumes:
-            - ~/.m2:/root/.m2
             - ./:/openmrs_distro
