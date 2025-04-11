@@ -1,21 +1,17 @@
-# Dockerfile
+# Use a valid OpenMRS distro image
+FROM openmrs/openmrs-distro-platform:2.5.11 as dev
 
-FROM openmrs/openmrs-core:latest as dev
+# Optional: Add anything extra you need here
 
-# Build steps...
 
-FROM openmrs/openmrs-core:latest
+# Final stage
+FROM openmrs/openmrs-distro-platform:2.5.11
 
-# Copy WAR, modules, etc.
-COPY --from=dev /openmrs/distribution/openmrs_core/openmrs.war /openmrs/distribution/openmrs_core/
-COPY --from=dev /openmrs/distribution/openmrs-distro.properties /openmrs/distribution/
-COPY --from=dev /openmrs/distribution/openmrs_modules /openmrs/distribution/openmrs_modules
-COPY --from=dev /openmrs/distribution/openmrs_owas /openmrs/distribution/openmrs_owas
-
-# ✅ Add this line to use your custom DB config
+# Copy any custom files if needed
 COPY config/openmrs-server.properties /openmrs/openmrs-server.properties
 
-# ✅ Ensure OpenMRS binds to port 8080
+# Expose the default port
 EXPOSE 8080
 
-CMD ["java", "-jar", "/openmrs/distribution/openmrs_core/openmrs.war"]
+CMD ["java", "-jar", "/openmrs/openmrs.war"]
+
