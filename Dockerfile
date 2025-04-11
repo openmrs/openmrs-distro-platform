@@ -1,17 +1,12 @@
-# Use a valid OpenMRS distro image
-FROM openmrs/openmrs-distro-platform:2.5.11 as dev
+FROM maven:3.8.5-openjdk-11 as builder
 
-# Optional: Add anything extra you need here
+# Clone openmrs-core
+RUN git clone https://github.com/openmrs/openmrs-core.git /openmrs-core
+WORKDIR /openmrs-core
+RUN mvn clean install -DskipTests
 
+FROM tomcat:9.0-jdk11
+COPY --from=builder /openmrs-core/webapp/target/openmrs.war /usr/local/tomcat/webapps/openmrs.war
 
-# Final stage
-FROM openmrs/openmrs-distro-platform:2.5.11
-
-# Copy any custom files if needed
-COPY config/openmrs-server.properties /openmrs/openmrs-server.properties
-
-# Expose the default port
 EXPOSE 8080
-
-CMD ["java", "-jar", "/openmrs/openmrs.war"]
-
+CMD ["catalina.sh", "run"]
