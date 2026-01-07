@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 ### Dev Stage
-FROM openmrs/openmrs-core:2.8.x-dev as dev
+FROM openmrs/openmrs-core:2.9.x-dev as dev
 WORKDIR /openmrs_distro
 
 ARG OMRS_BUILD_RESULT="/openmrs_distro/target/distro/web"
@@ -23,7 +23,7 @@ RUN cp $OMRS_BUILD_RESULT/openmrs.war /openmrs/distribution/openmrs_core/ && \
 RUN mvn clean $MVN_ARGS_SETTINGS
 
 ### Run Stage
-FROM openmrs/openmrs-core:2.8.x
+FROM openmrs/openmrs-core:2.9.x
 
 # Copy the war to be sure it matches the version in distro
 COPY --from=dev /openmrs/distribution/openmrs_core/openmrs.war /openmrs/distribution/openmrs_core/
