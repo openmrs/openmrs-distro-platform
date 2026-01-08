@@ -14,10 +14,10 @@ COPY pom.xml openmrs-distro.properties readme.txt ./
 # Build the distro
 RUN mvn $MVN_ARGS $MVN_ARGS_SETTINGS
 
-RUN cp $OMRS_BUILD_RESULT/openmrs.war /openmrs/distribution/openmrs_core/ && \
-    cp $OMRS_BUILD_RESULT/openmrs-distro.properties /openmrs/distribution/ && \
-    cp -R $OMRS_BUILD_RESULT/modules /openmrs/distribution/openmrs_modules && \
-    cp -R $OMRS_BUILD_RESULT/owa /openmrs/distribution/openmrs_owas
+RUN cp -p $OMRS_BUILD_RESULT/openmrs.war /openmrs/distribution/openmrs_core/ && \
+    cp -p $OMRS_BUILD_RESULT/openmrs-distro.properties /openmrs/distribution/ && \
+    cp -Rp $OMRS_BUILD_RESULT/modules /openmrs/distribution/openmrs_modules && \
+    cp -Rp $OMRS_BUILD_RESULT/owa /openmrs/distribution/openmrs_owas
 
 # Clean up after copying needed artifacts
 RUN mvn clean $MVN_ARGS_SETTINGS
